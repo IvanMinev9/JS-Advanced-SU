@@ -1,5 +1,5 @@
 function solve(input) {
-  let helth = 100;
+  let health = 100;
   let loot = 0;
   let rooms = input.split(`|`);
 
@@ -9,18 +9,18 @@ function solve(input) {
     let num = Number(room[1]);
 
     if (command == `potion`) {
-      if (helth + num > 100) {
-        num = 100 - helth;
+      if (health + num > 100) {
+        num = 100 - health;
       }
-      helth += num;
+      health += num;
       console.log(`You healed for ${num} hp.`);
-      console.log(`Current health: ${helth} hp.`);
+      console.log(`Current health: ${health} hp.`);
     } else if (command == `chest`) {
       loot += num;
-      console.log(`You found ${num} bitcoins`);
+      console.log(`You found ${num} bitcoins.`);
     } else {
-      helth -= num;
-      if (helth <= 0) {
+      health -= num;
+      if (health <= 0) {
         console.log(`You died! Killed by ${command}.`);
         console.log(`Best room: ${i + 1}`);
         return;
@@ -31,7 +31,7 @@ function solve(input) {
   }
   console.log(`You've made it!`);
   console.log(`Bitcoins: ${loot}`);
-  console.log(`Health: ${helth}`);
+  console.log(`Health: ${health}`);
 }
 
 solve("rat 10|bat 20|potion 10|rat 10|chest 100|boss 70|chest 1000");
