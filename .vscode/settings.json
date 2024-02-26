@@ -12,5 +12,6 @@
     "Ugff",
     "unideck"
   ],
-  "synthwave84.brightness": 0.68
+  "synthwave84.brightness": 0.68,
+  "CodeGPT.apiKey": "CodeGPT Plus Beta"
 }
