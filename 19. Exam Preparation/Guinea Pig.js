@@ -7,7 +7,6 @@ function pig(values) {
 
 	for (let i = 1; i <= 30; i++) {
 		food -= 300;
-
 		if (i % 2 == 0) {
 			hay -= food * 0.05;
 		}
@@ -19,7 +18,6 @@ function pig(values) {
 			return;
 		}
 	}
-
 	console.log(
 		`Everything is fine! Puppy is happy! Food: ${(food / 1000).toFixed(
 			2
