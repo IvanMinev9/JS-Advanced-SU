@@ -2,12 +2,13 @@ function bomb(numbers, bombInfo) {
   let [bobmNum, power] = bombInfo;
 
   while (numbers.includes(bobmNum)) {
-    let idx = numbers.indexOf(bobmNum);
-    numbers.splice(Math.max(0, idx - power), power * 2 + 1, 0);
+    let index = numbers.indexOf(bobmNum);
+
+    numbers.splice(Math.max(0, index - power), power * 2 + 1, 0);
   }
   let sum = 0;
-  for (let num of numbers) {
-    sum += num;
+  for (let nums of numbers) {
+    sum += nums;
   }
   console.log(sum);
 }
