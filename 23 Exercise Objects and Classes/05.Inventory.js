@@ -1,23 +1,30 @@
-function inventoryHero(arr) {
-	let heroInfo = [];
+function heros(arr) {
+	let herosInfo = [];
 
-	for (let element of arr) {
-		let [heroName, heroLevel, inventory] = element.split(` / `);
+	for (let el of arr) {
+		let [heroName, level, inv] = el.split(` / `);
 
-		let objJHero = { hero: heroName, level: heroLevel, items: inventory };
-		heroInfo.push(objJHero);
+		let objHeros = {
+			hero: heroName,
+			level: level,
+			items: inv,
+		};
+		herosInfo.push(objHeros);
 	}
-	for (let el of heroInfo) {
-		let [heroName, heroLevel, inventory] = el;
-		console.log(heroName);
-	}
+
+	herosInfo.sort((a, b) => a.level - b.level);
+	herosInfo.map((element) =>
+		console.log(
+			`Hero: ${element.hero}\nlevel => ${element.level}\nitems => ${element.items}`
+		)
+	);
 }
-inventoryHero([
+heros([
 	"Isacc / 25 / Apple, GravityGun",
 	"Derek / 12 / BarrelVest, DestructionSword",
 	"Hes / 1 / Desolator, Sentinel, Antara",
 ]);
-inventoryHero([
+heros([
 	"Batman / 2 / Banana, Gun",
 	"Superman / 18 / Sword",
 	"Poppy / 28 / Sentinel, Antara",
