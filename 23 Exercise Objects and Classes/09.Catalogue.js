@@ -4,18 +4,17 @@ function catalogue(arr) {
 	for (let el of arr) {
 		let [name, price] = el.split(` : `);
 		price = Number(price);
-
 		product.push({ name, price });
 	}
 	let sortedPro = product.sort((a, b) => a.name.localeCompare(b.name));
 
-	let currLet = ``;
+	let curLet = "";
 	for (let el of sortedPro) {
 		let firstLet = el.name[0];
 
-		if (currLet != firstLet) {
-			currLet = firstLet;
-			console.log(currLet);
+		if (curLet != firstLet) {
+			curLet = firstLet;
+			console.log(curLet);
 		}
 		console.log(`  ${el.name}: ${el.price}`);
 	}
