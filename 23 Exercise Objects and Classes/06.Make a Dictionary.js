@@ -1,15 +1,17 @@
 function dictionary(arr) {
 	let objDic = {};
-	for (let element of arr) {
-		let obj = JSON.parse(element);
+
+	for (let el of arr) {
+		let obj = JSON.parse(el);
 
 		objDic = Object.assign(objDic, obj);
 	}
-	let sortedKeys = Object.keys(objDic).sort((a, b) => a.localeCompare(b));
 
-	for (term of sortedKeys) {
-		let definition = objDic[term];
-		console.log(`Term: ${term} => Definition: ${definition}`);
+	let keys = Object.keys(objDic).sort((a, b) => a.localeCompare(b));
+
+	for (term of keys) {
+		let def = objDic[term];
+		console.log(`Term: ${term} => Definition: ${def}`);
 	}
 }
 dictionary([

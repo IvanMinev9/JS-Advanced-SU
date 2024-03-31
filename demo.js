@@ -1,45 +1,25 @@
-function solve(arr) {
-	class Songs {
-		constructor(typeList, name, time) {
-			this.typeList = typeList;
-			this.name = name;
-			this.time = time;
-		}
+class Storage {
+	constructor(capacity) {
+		this.capacity = capacity;
+		this.storage = [];
+		this.totalCost = 0;
 	}
-	let songs = [];
-	let numOfSongs = arr.shift();
-	let command = arr.pop();
-
-	for (let el = 0; el < numOfSongs; el++) {
-		let tokens = arr[el].split(`_`);
-
-		let [typeList, name, time] = tokens;
-		let song = new Songs(typeList, name, time);
-		songs.push(song);
+	addProduct(product) {
+		this.storage.push(product);
+		this.capacity -= product.quantity;
+		this.totalCost += product.price * product.quantity;
 	}
-
-	if (command == `all`) {
-		songs.forEach((song) => console.log(song.name));
-	} else {
-		let filtered = songs.filter((song) => song.typeList == command);
-		filtered.forEach((song) => console.log(song.name));
+	getProducts() {
+		return this.storage.map((product) => JSON.stringify(product)).join(`\n`);
 	}
 }
-solve([
-	3,
-	"favourite_DownTown_3:14",
-	"favourite_Kiss_4:16",
-	"favourite_Smooth Criminal_4:01",
-	"favourite",
-]);
-console.log(`--------`);
-solve([
-	4,
-	"favourite_DownTown_3:14",
-	"listenLater_Andalouse_3:24",
-	"favourite_In To The Night_3:58",
-	"favourite_Live It Up_3:48",
-	"listenLater",
-]);
-console.log(`--------`);
-solve([2, "like_Replay_3:15", "ban_Photoshop_3:48", "all"]);
+let productOne = { name: "Cucamber", price: 1.5, quantity: 15 };
+let productTwo = { name: "Tomato", price: 0.9, quantity: 25 };
+let productThree = { name: "Bread", price: 1.1, quantity: 8 };
+let storage = new Storage(50);
+storage.addProduct(productOne);
+storage.addProduct(productTwo);
+storage.addProduct(productThree);
+console.log(storage.getProducts());
+console.log(storage.capacity);
+console.log(storage.totalCost);

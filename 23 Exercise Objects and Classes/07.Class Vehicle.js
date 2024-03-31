@@ -6,7 +6,6 @@ class Vehicle {
 		this.parts.quality = parts.engine * parts.power;
 		this.fuel = fuel;
 	}
-
 	drive(fuelLoss) {
 		this.fuel -= fuelLoss;
 	}
