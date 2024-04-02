@@ -2,7 +2,16 @@ function adrBook(arr) {
 	let book = {};
 
 	for (let el of arr) {
-		console.log(el);
+		let [name, address] = el.split(`:`);
+
+		book[name] = address;
+	}
+
+	let entry = Object.entries(book).sort((a, b) => a[0].localeCompare(b[0]));
+
+	for (let el of entry) {
+		let [name, adr] = el;
+		console.log(`${name} -> ${adr}`);
 	}
 }
 adrBook([
