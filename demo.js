@@ -1,33 +1,27 @@
 function solve(arr) {
-	let map = new Map();
-	let count = 0;
-	for (let words of arr) {
-		if (!map.has(words)) {
-			count = 1;
-		} else {
-			count = map.get(words) + 1;
-		}
-		map.set(words, count);
-	}
-	let sorted = Array.from(map);
-	sorted.sort((a, b) => b[1] - a[1]);
-	for (let [word, count] of sorted) {
-		console.log(`${word} -> ${count} times`);
-	}
+  let obj = {};
+
+  obj = arr.reduce((acc, cur) => {
+    let [command, licencePlate] = cur.split(`, `);
+
+    if (acc.hasOwnProperty(licencePlate)) {
+      if (command == `OUT`) {
+        acc[licencePlate] = `remove`;
+      }
+    }
+  });
 }
 solve([
-	"Here",
-	"is",
-	"the",
-	"first",
-	"sentence",
-	"Here",
-	"is",
-	"another",
-	"sentence",
-	"And",
-	"finally",
-	"the",
-	"third",
-	"sentence",
+  "IN, CA2844AA",
+  "IN, CA1234TA",
+  "OUT, CA2844AA",
+  "IN, CA9999TT",
+  "IN, CA2866HI",
+  "OUT, CA1234TA",
+  "IN, CA2844AA",
+  "OUT, CA2866HI",
+  "IN, CA9876HH",
+  "IN, CA2822UU",
 ]);
+console.log(`---------------------------`);
+solve(["IN, CA2844AA", "IN, CA1234TA", "OUT, CA2844AA", "OUT, CA1234TA"]);
