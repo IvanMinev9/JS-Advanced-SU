@@ -1,27 +1,57 @@
 function solve(arr) {
-  let obj = {};
+  let emptySrt = ``;
+  let command = arr.shift();
 
-  obj = arr.reduce((acc, cur) => {
-    let [command, licencePlate] = cur.split(`, `);
+  while (command != `End`) {
+    let [action, val] = command.split(` `);
 
-    if (acc.hasOwnProperty(licencePlate)) {
-      if (command == `OUT`) {
-        acc[licencePlate] = `remove`;
+    if (action == `Add`) {
+      emptySrt += val;
+    } else if (action == `Upgrade`) {
+      emptySrt = emptySrt
+        .split("")
+        .map((char) =>
+          char === val ? String.fromCharCode(char.charCodeAt(0) + 1) : char
+        )
+        .join("");
+    } else if (action == `Print`) {
+      console.log(emptySrt);
+    } else if (action == `Index`) {
+      let occur = [];
+      for (let i = 0; i < emptySrt.length; i++) {
+        if (emptySrt[i].includes(val)) {
+          occur.push(i);
+        } else if (val < 0) {
+          console.log(`None`);
+        }
+      }
+
+      console.log(occur.join(` `));
+    } else if (action == `Remove`) {
+      while (emptySrt.includes(val)) {
+        emptySrt = emptySrt.replace(val, ``);
       }
     }
-  });
+    command = arr.shift();
+  }
 }
 solve([
-  "IN, CA2844AA",
-  "IN, CA1234TA",
-  "OUT, CA2844AA",
-  "IN, CA9999TT",
-  "IN, CA2866HI",
-  "OUT, CA1234TA",
-  "IN, CA2844AA",
-  "OUT, CA2866HI",
-  "IN, CA9876HH",
-  "IN, CA2822UU",
+  "Add University",
+  "Print",
+  "Upgrade n",
+  "Print",
+  "Index i",
+  "Remove sity",
+  "Print",
+  "End",
 ]);
-console.log(`---------------------------`);
-solve(["IN, CA2844AA", "IN, CA1234TA", "OUT, CA2844AA", "OUT, CA1234TA"]);
+
+solve([
+  "Add HelloWorld",
+  "Upgrade e",
+  "Print",
+  "Index b",
+  "Remove rl",
+  "Print",
+  "End",
+]);
