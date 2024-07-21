@@ -1,1 +1,1 @@
-# JS-Advanced-SU
+# JS-Fundamentals-SU
